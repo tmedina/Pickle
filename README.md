@@ -13,13 +13,12 @@ start sbt
 $sbt
 
 run an application
-==================
 
 Pickle Simulation
->pickle path/to/application.xml
+>pickle apps/BoidFlockingDemo.xml
 
 Pickle Evolution
->evolve path/to/evolve.xml path/to/outputDir
+>evolve conf/evolve.xml evolutionResults
 
 Replay an evolved controller result
->replay path/to/result.xml
+>replay evolutionResults/generation.1/result_0.xml
