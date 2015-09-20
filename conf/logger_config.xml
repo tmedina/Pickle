@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %c %-5level - %msg%n"/>
+		</Console>
+
+		<File name="SurvivorsFile" fileName="logs/survivors.log">
+			<PatternLayout pattern="%msg%n"/>
+		</File>
+<!--
+		<RollingFile name="SurvivorsFile" fileName="logs/survivors.log" append="true"
+			filePattern="logs/survivors-%i.log">
+			<PatternLayout pattern="%msg%n" append="true"/>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="5 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
+		-->
+
+		<File name="AgentFile" fileName="logs/agents.log">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %c %-5level - %msg%n"/>
+		</File>
+		<File name="DriverFile" fileName="logs/driver.log">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %c %-5level - %msg%n"/>
+		</File>
+		<File name="ControllerFile" fileName="logs/controller.log">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %c %-5level - %msg%n"/>
+		</File>
+		<File name="MotorSchemaFile" fileName="logs/motorschema.log">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %c %-5level - %msg%n"/>
+		</File>
+		<File name="BodyFile" fileName="logs/body.log">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %c %-5level - %msg%n"/>
+		</File>
+		<File name="MainFile" fileName="logs/main.log">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %c %-5level - %msg%n"/>
+		</File>
+	</Appenders>
+
+	<Loggers>
+
+		<Logger name="TotalSurvivingAgents" level="error" additivity="false">
+			<AppenderRef ref="SurvivorsFile"/>
+		</Logger>
+		<Logger name="MotorSchema" level="error" additivity="false">
+			<AppenderRef ref="MotorSchemaFile"/>
+		</Logger>
+		<Logger name="Controller" level="error" additivity="false">
+			<AppenderRef ref="ControllerFile"/>
+		</Logger>
+
+		<Logger name="SimulationDriver" level="error" additivity="false">
+			<AppenderRef ref="DriverFile"/>
+		</Logger>
+
+		<Logger name="Agent" level="error" additivity="false">
+			<AppenderRef ref="AgentFile"/>
+		</Logger>
+
+		<Logger name="Body" level="error" additivity="false">
+			<AppenderRef ref="BodyFile"/>
+		</Logger>
+
+		<Logger name="Pickle_Main" level="error" additivity="false">
+			<AppenderRef ref="MainFile"/>
+		</Logger>
+
+		<Root level="error">
+			<AppenderRef ref="Console"/>
+		</Root>
+
+	</Loggers>
+
+</Configuration>

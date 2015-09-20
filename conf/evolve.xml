@@ -1,0 +1,36 @@
+<Evolve>	
+	<Destination>evolutions</Destination>
+	<RandomSeed>3948573593285</RandomSeed>
+	<SimulationSteps>1000</SimulationSteps>
+
+	<ControllerParameters>
+		<ApplicationXML>apps/BoidFlockingDemo.xml</ApplicationXML>
+		<AgentToEvolve>Minnow</AgentToEvolve>
+		<AgentSchemas>
+			<Max>1</Max>
+			<Min>1</Min>
+		</AgentSchemas>
+		<NavigationController>
+			<MaxDepth>5</MaxDepth>
+			<MinDepth>1</MinDepth>
+			<MaxMSChildren>5</MaxMSChildren>
+			<MinMSChildren>1</MinMSChildren>
+			<MaxCOChildren>2</MaxCOChildren>
+			<MinCOChildren>1</MinCOChildren>
+			<MaxWeight>10</MaxWeight>
+		</NavigationController>
+		<Actions>
+			<Max>2</Max>
+			<Min>0</Min>
+		</Actions>
+	</ControllerParameters>
+
+	<EvolutionParameters>
+		<PopulationSize>24</PopulationSize>
+		<MutationProbability>5</MutationProbability>
+		<CrossoverProbability>10</CrossoverProbability>
+		<SurvivorSelection>Generational</SurvivorSelection>
+		<Generations>500</Generations>
+	</EvolutionParameters>
+
+</Evolve>	

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application name="BoidFlockingDemo">
+
+	<Driver>Mason</Driver>
+	<GUI>Mason</GUI>
+	<Steps>1000</Steps>
+
+	<Display>	
+		<width>640</width>
+		<height>480</height>
+	</Display>	
+
+	<World>
+		<width>1280</width>
+		<height>720</height>
+		<friction>0.07</friction>
+	</World>
+
+	<Agents>
+
+		<Agent type="Shark">
+			<Controller file="apps/PredatorController.xml" />
+			<Count>3</Count>
+			<Size>20</Size>
+			<MaxSpeed>8</MaxSpeed>
+			<TurningRadius>40</TurningRadius>
+
+			<Attributes>
+				<Attribute type="string" key="Color">Black</Attribute>
+			</Attributes>
+
+			<Sensors>
+				<Sensor name="bumpedMinnow">
+					<Bump>Minnow</Bump>
+				</Sensor>
+				<Sensor name="getNearestMinnow" range="550" left_offset="180" right_offset="180" center="0">
+					<Nearest>
+						<Filter type="String" lhs="type" op="equals" rhs="Minnow" />
+					</Nearest>
+				</Sensor>
+				<Sensor name="getNearestShark" range="50" left_offset="180" right_offset="180" center="0">
+					<Nearest>
+						<Filter type="String" lhs="type" op="equals" rhs="Shark" />
+					</Nearest>
+				</Sensor>
+				<Sensor name="getNearestEdge" range="20" left_offset="180" right_offset="180" center="0">
+					<Nearest>
+						<Filter type="String" lhs="type" op="equals" rhs="Edge" />
+					</Nearest>
+				</Sensor>
+				<Sensor name="getRandomPoint" active="70">
+					<Random>0.50</Random>
+				</Sensor>
+			</Sensors>
+
+			<Actuators>
+				<Actuator name="Navigator" type="LazyNavigation" speed_threshold="0.9" vector_threshold="5" />
+				<Actuator name="eatMinnow" type="Chomp" />
+			</Actuators>
+
+		</Agent>
+
+		<Agent type="Minnow">
+			<Controller file="apps/BoidController.xml" />
+		<!--
+			<Controller file="/Users/medinat/Projects/PickleEvolutionResults/WithConfidence/WithConfidence/6.17.15_1/generation.50/result_0.xml"/>
+			<Controller file="/Users/medinat/Projects/thesis3/drawings/EvolvedNonFlocking2/EvolvedNonFlocking2.6.30.15_3.g12.r0.xml"/>
+			<Controller file="/Users/medinat/Projects/thesis3/drawings/EvolvedNonFlocking/EvolvedNonFlocking.6.5.15_1.g50.r0.xml" />
+			<Controller file="/Users/medinat/Projects/thesis3/drawings/EvolvedFlocking/EvolvedFlocking.6.17.15_1.g50.r0.xml" />
+			<Controller file="/tmp/tempResult.xml" />
+			<Controller file="apps/EvolvedController_PastFlocking.xml" />
+			-->
+			<Count>60</Count>
+			<Size>10</Size>
+			<MaxSpeed>10</MaxSpeed>
+			<TurningRadius>30</TurningRadius>
+
+			<Attributes>
+				<Attribute type="string" key="Color">Blue</Attribute>
+			</Attributes>
+
+			<Sensors>
+				<Sensor name="getNearestShark" range="100" left_offset="180" right_offset="180" center="0">
+					<Nearest>
+						<Filter type="String" lhs="type" op="equals" rhs="Shark" />
+					</Nearest>
+				</Sensor>
+				<Sensor name="getNearestMinnowCollide" range="20" left_offset="180" right_offset="180" center="0">
+					<Nearest>
+						<Filter type="String" lhs="type" op="equals" rhs="Minnow" />
+					</Nearest>
+				</Sensor>
+				<Sensor name="getNearestMinnowInner" range="50" left_offset="180" right_offset="180" center="0">
+					<Nearest>
+						<Filter type="String" lhs="type" op="equals" rhs="Minnow" />
+					</Nearest>
+				</Sensor>
+				<Sensor name="getNearestMinnowOuter" range="100" left_offset="100" right_offset="100" center="0">
+					<Nearest>
+						<Filter type="String" lhs="type" op="equals" rhs="Minnow" />
+					</Nearest>
+				</Sensor>
+				<Sensor name="getNearestEdge" range="100" left_offset="120" right_offset="120" center="0">
+					<Nearest>
+						<Filter type="String" lhs="type" op="equals" rhs="Edge" />
+					</Nearest>
+				</Sensor>
+				<Sensor name="getRandomPoint" active="70">
+					<Random>0.3</Random>
+				</Sensor>
+			</Sensors>
+
+			<Actuators>
+				<Actuator name="Navigator" type="LazyNavigation" speed_threshold="1.10" vector_threshold="5" />
+			</Actuators>
+
+		</Agent>
+	</Agents>
+
+
+</Application>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

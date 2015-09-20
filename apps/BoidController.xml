@@ -1,0 +1,37 @@
+<controller>
+	<AgentSchema name="Boid">
+		<Navigation init="true" actuator="LazyNavigation">
+			<CoordinationOperator type="priority">
+
+				<MotorSchema type="repulsion" curve="linear" priority="6"
+					PerceptualSchema="getNearestEdge" />
+
+				<MotorSchema type="repulsion" curve="linear" priority="5"
+					PerceptualSchema="getNearestShark" />
+
+				<MotorSchema type="repulsion" curve="linear" priority="4"
+					PerceptualSchema="getNearestMinnowCollide" />
+
+				<CoordinationOperator type="sum" priority="3">
+					<MotorSchema type="mimic" curve="linear" weight="3"
+						PerceptualSchema="getNearestMinnowInner" />
+					<MotorSchema type="repulsion" curve="linear" weight="1"
+						PerceptualSchema="getNearestMinnowInner" />
+				</CoordinationOperator>
+				
+				<CoordinationOperator type="sum" priority="2">
+					<MotorSchema type="mimic" curve="linear" weight="3"
+						PerceptualSchema="getNearestMinnowOuter" />
+					<MotorSchema type="attraction" curve="linear" weight="1"
+						PerceptualSchema="getNearestMinnowOuter" />
+				</CoordinationOperator>
+
+				<MotorSchema type="attraction" curve="linear" priority="1"
+					PerceptualSchema="getRandomPoint" />
+
+			</CoordinationOperator>
+		</Navigation>
+	</AgentSchema>
+</controller>
+
+

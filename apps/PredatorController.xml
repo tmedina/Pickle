@@ -1,0 +1,20 @@
+<controller>
+	<AgentSchema name="hunt" initial="true">
+		<Navigation actuator="LazyNavigation">
+				<CoordinationOperator type="priority" weight="1">
+					<MotorSchema type="repulsion" curve="linear" priority="4"
+						PerceptualSchema="getNearestEdge" />
+					<MotorSchema type="repulsion" curve="linear" priority="3"
+						PerceptualSchema="getNearestShark" />
+					<MotorSchema type="attraction" curve="linear" priority="2"
+						PerceptualSchema="getNearestMinnow" />
+					<MotorSchema type="attraction" curve="linear" priority="1"
+						PerceptualSchema="getRandomPoint" />
+				</CoordinationOperator>
+		</Navigation>
+
+		<Action actuator="eatMinnow">
+			<ActionSchema PerceptualSchema="bumpedMinnow" />
+		</Action>
+	</AgentSchema>
+</controller>
